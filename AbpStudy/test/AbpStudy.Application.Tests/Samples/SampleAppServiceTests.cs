@@ -1,6 +1,7 @@
 ﻿using Shouldly;
 using System.Threading.Tasks;
 using Volo.Abp.Identity;
+using Volo.Abp.SettingManagement;
 using Xunit;
 
 namespace AbpStudy.Samples
@@ -13,10 +14,12 @@ namespace AbpStudy.Samples
     public class SampleAppServiceTests : AbpStudyApplicationTestBase
     {
         private readonly IIdentityUserAppService _userAppService;
+        private ISettingManager _settingManager;
 
         public SampleAppServiceTests()
         {
             _userAppService = GetRequiredService<IIdentityUserAppService>();
+            _settingManager = GetRequiredService<ISettingManager>();
         }
 
         [Fact]
