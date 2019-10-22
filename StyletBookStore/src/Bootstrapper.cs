@@ -15,5 +15,10 @@ namespace StyletBookStore
         {
             // Perform any other configuration before the application starts
         }
+
+        protected override void OnStart()
+        {
+            Stylet.Logging.LogManager.Enabled = true;
+        }
     }
 }
