@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq.Expressions;
-using System.Windows;
 using Moq;
 using Stylet;
 using StyletBookStore.Pages;
