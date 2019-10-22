@@ -98,7 +98,7 @@ namespace StyletBookStore.Test
 
         #endregion
 
-        #region 否则显示"用户名或密码不正确"的消息框.
+        #region  测试功能点: 用户名或密码不正确显示"用户名或密码不正确"的消息框.
 
         /// <summary>
         /// 用户名错误
