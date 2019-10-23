@@ -42,11 +42,16 @@ namespace StyletBookStore.Test
         [Fact]
         public void CanLoginTest_NoPassword()
         {
+            // Arrange
             var vm = _container.Get<LoginViewModel>();
-
             vm.UserName = "waku";
             vm.Password = String.Empty;
-            vm.CanLogin.ShouldBe(false);
+
+            // Act
+            bool canLogin = vm.CanLogin;
+
+            // Assert
+            canLogin.ShouldBe(false);
         }
 
         /// <summary>
@@ -55,11 +60,16 @@ namespace StyletBookStore.Test
         [Fact]
         public void CanLoginTest_NoUserName()
         {
+            // Arrange
             var vm = _container.Get<LoginViewModel>();
-
             vm.UserName = string.Empty;
             vm.Password = "123";
-            vm.CanLogin.ShouldBe(false);
+
+            // Act
+            bool canLogin = vm.CanLogin;
+
+            // Assert
+            canLogin.ShouldBe(false);
         }
 
         /// <summary>
@@ -68,11 +78,16 @@ namespace StyletBookStore.Test
         [Fact]
         public void CanLoginTest()
         {
+            // Arrange
             var vm = _container.Get<LoginViewModel>();
-
             vm.UserName = "waku";
             vm.Password = "123";
-            vm.CanLogin.ShouldBe(true);
+
+            // Act
+            bool canLogin = vm.CanLogin;
+
+            // Assert
+            canLogin.ShouldBe(true);
         }
 
         #endregion
@@ -85,13 +100,17 @@ namespace StyletBookStore.Test
         [Fact]
         public void LoginTest()
         {
+            // Arrange
             var vm = _container.Get<LoginViewModel>();
             var childDelegate = _container.Get<IChildDelegate>();
-
             vm.UserName = "waku";
             vm.Password = "123";
             vm.Parent = childDelegate;
+
+            // Act
             vm.Login();
+            
+            // Assert
             _mockWindowManager.Verify(_showMessageBoxExpr, Times.Never); // 不应该显示消息框
             _mockChildDelegate.Verify(cd => cd.CloseItem(vm, true), Times.Once);    // 应该关闭窗口,并返回true
         }
@@ -106,10 +125,15 @@ namespace StyletBookStore.Test
         [Fact]
         public void LoginTest_WrongUserName()
         {
+            // Arrange
             var vm = _container.Get<LoginViewModel>();
             vm.UserName = "wrong_username";
             vm.Password = "123";
+
+            // Act
             vm.Login();
+
+            // Assert
             _mockWindowManager.Verify(_showMessageBoxExpr, Times.Once); // 应该显示消息框
         }
 
@@ -119,14 +143,18 @@ namespace StyletBookStore.Test
         [Fact]
         public void LoginTest_WrongPassword()
         {
+            // Arrange
             var vm = _container.Get<LoginViewModel>();
             vm.UserName = "waku";
             vm.Password = "wrong_password";
+
+            // Act
             vm.Login();
+
+            // Assert
             _mockWindowManager.Verify(_showMessageBoxExpr, Times.Once); // 应该显示消息框
         }
 
         #endregion
-
     }
 }

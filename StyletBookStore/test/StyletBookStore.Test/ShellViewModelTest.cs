@@ -54,10 +54,14 @@ namespace StyletBookStore.Test
         [Fact]
         public void ExitTest()
         {
+            // Arrange
             var vm = _container.Get<ShellViewModelForTest>();
             vm.Parent = _mockChildDelegate.Object;
+
+            // Act
             vm.LoadView();
 
+            // Assert
             _mockChildDelegate.Verify(cd => cd.CloseItem(vm, null), Times.Once);    // 应该关闭窗口,并返回true
         }
 
