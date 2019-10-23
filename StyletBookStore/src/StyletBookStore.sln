@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StyletBookStore", "StyletBookStore.csproj", "{C20F1FF5-F89E-4566-9AAF-706EFAECBA22}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StyletBookStore.Test", "..\test\StyletBookStore.Test\StyletBookStore.Test.csproj", "{C2282010-68AD-44B3-82C5-A561B77C5FD5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyletBookStore.Test", "..\test\StyletBookStore.Test\StyletBookStore.Test.csproj", "{C2282010-68AD-44B3-82C5-A561B77C5FD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
