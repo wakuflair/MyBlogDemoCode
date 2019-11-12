@@ -7,10 +7,6 @@
         xmlns:pages="clr-namespace:StyletBookStore.Pages"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance pages:ShellViewModel}"
-        Title="Stylet Project" Height="450" Width="800">
-    <Grid>
-        <TextBlock FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center">
-            Hello Stylet!
-        </TextBlock>
-    </Grid>
+        Title="简易图书管理系统" Height="450" Width="800">
+    <ContentControl s:View.Model="{Binding ActiveItem}"/>
 </Window>

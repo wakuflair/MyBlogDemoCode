@@ -21,6 +21,10 @@ namespace StyletBookStore.Pages
         public LoginViewModel(IWindowManager windowManager)
         {
             _windowManager = windowManager;
+#if DEBUG
+            UserName = "waku";
+            Password = "123";
+#endif
         }
 
         /// <summary>
