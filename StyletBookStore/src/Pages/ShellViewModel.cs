@@ -30,7 +30,7 @@ namespace StyletBookStore.Pages
                 RequestClose();
             }
 
-            // 显示书籍页面
+            // 显示书籍
             var indexViewModel = _container.Get<IndexViewModel>();
             ActivateItem(indexViewModel);
         }
