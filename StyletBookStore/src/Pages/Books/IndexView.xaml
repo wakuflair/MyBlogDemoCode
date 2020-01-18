@@ -1,12 +1,20 @@
 ﻿<UserControl x:Class="StyletBookStore.Pages.Books.IndexView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:StyletBookStore.Pages.Books"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800"
+             d:DataContext="{d:DesignInstance local:IndexViewModel}">
     <Grid>
-        <TextBlock Text="IndexView"/>
+        <DataGrid ItemsSource="{Binding Books}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="名称" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="类型" Binding="{Binding Type}" />
+                <DataGridTextColumn Header="发布年月" Binding="{Binding PublishDate}" />
+                <DataGridTextColumn Header="价格" Binding="{Binding Price}" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
