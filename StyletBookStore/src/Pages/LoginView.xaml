@@ -6,6 +6,11 @@
         xmlns:pages="clr-namespace:StyletBookStore.Pages"
         xmlns:s="https://github.com/canton7/Stylet"
         xmlns:wpf="clr-namespace:StyletBookStore.WPF"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="登录" 
@@ -20,13 +25,13 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="用户名" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="密码" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-        <PasswordBox Grid.Row="1" Grid.Column="1" Margin="5" wpf:PasswordHelper.Attach="True" wpf:PasswordHelper.Password="{Binding Path=Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></PasswordBox>
+        <materialDesign:PackIcon Grid.Row="0" Grid.Column="0" Kind="Account" VerticalAlignment="Center" HorizontalAlignment="Right"  />
+        <materialDesign:PackIcon Grid.Row="1" Grid.Column="0" Kind="Lock" VerticalAlignment="Center" HorizontalAlignment="Right"  />
+        <TextBox Grid.Row="0" Grid.Column="1" materialDesign:HintAssist.Hint="用户名" Margin="5" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <PasswordBox Grid.Row="1" Grid.Column="1" Margin="5" materialDesign:HintAssist.Hint="密码" wpf:PasswordHelper.Attach="True" wpf:PasswordHelper.Password="{Binding Path=Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></PasswordBox>
         <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="登录" Margin="5" Padding="15 5 15 5" Command="{s:Action Login}"></Button>
     </Grid>
 </Window>
