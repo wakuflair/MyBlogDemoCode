@@ -26,5 +26,15 @@
         /// 科幻
         /// </summary>
         ScienceFiction,
+
+        /// <summary>
+        /// 悬疑
+        /// </summary>
+        Mystery,
+
+        /// <summary>
+        /// 编程
+        /// </summary>
+        Programming,
     }
 }

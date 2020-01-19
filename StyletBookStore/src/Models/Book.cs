@@ -16,12 +16,15 @@ namespace StyletBookStore.Models
 
         public float Price { get; set; }
 
-        public Book(string name, BookType type, DateTime publishDate, float price)
+        public string Isbn { get; set; }
+
+        public Book(string name, BookType type, DateTime publishDate, float price, string isbn)
         {
             Name = name;
             Type = type;
             PublishDate = publishDate;
             Price = price;
+            Isbn = isbn;
         }
     }
 }
