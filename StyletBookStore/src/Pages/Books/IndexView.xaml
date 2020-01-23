@@ -8,13 +8,31 @@
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance local:IndexViewModel}">
     <Grid>
-        <DataGrid ItemsSource="{Binding Books}" AutoGenerateColumns="False" IsReadOnly="True" AlternatingRowBackground="WhiteSmoke">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.Column="0" ItemsSource="{Binding Books}" AutoGenerateColumns="False" IsReadOnly="True" AlternatingRowBackground="WhiteSmoke" SelectedItem="{Binding SelectedBook}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="名称" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="书名" Binding="{Binding Name}" />
                 <DataGridTextColumn Header="类型" Binding="{Binding Type}" />
-                <DataGridTextColumn Header="发布年月" Binding="{Binding PublishDate}" />
                 <DataGridTextColumn Header="价格" Binding="{Binding Price}" />
             </DataGrid.Columns>
         </DataGrid>
+        <DockPanel Grid.Column="1" Width="400" Background="WhiteSmoke">
+            <Image DockPanel.Dock="Top" Width="140" Height="206" Source="{Binding SelectedBook.CoverUrl}"></Image>
+            <StackPanel>
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Margin" Value="5"></Setter>
+                        <Setter Property="FontSize" Value="20"></Setter>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock Text="{Binding SelectedBook.Name, StringFormat='书名:《{0}》'}"></TextBlock>
+                <TextBlock Text="{Binding SelectedBook.Type, StringFormat='类型: {0}'}"></TextBlock>
+                <TextBlock Text="{Binding SelectedBook.Price, StringFormat='价格: {0}元'}"></TextBlock>
+                <TextBlock Text="{Binding SelectedBook.PublishDate, StringFormat='出版年月: {0:yyyy-MM}'}"></TextBlock>
+            </StackPanel>
+        </DockPanel>
     </Grid>
 </UserControl>
