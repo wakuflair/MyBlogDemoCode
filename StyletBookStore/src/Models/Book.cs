@@ -1,12 +1,11 @@
 ﻿using System;
-using Stylet;
 
 namespace StyletBookStore.Models
 {
     /// <summary>
     /// 图书
     /// </summary>
-    public class Book : PropertyChangedBase
+    public class Book
     {
         /// <summary>
         /// 书名

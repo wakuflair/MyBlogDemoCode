@@ -20,9 +20,10 @@ namespace StyletBookStore.Services
                new Book("肖申克的救赎", BookType.Mystery, DateTime.Parse("2006-7"), 26.9f, "https://img9.doubanio.com/view/subject/l/public/s4007145.jpg"),
            }; 
         }
+    
         public IEnumerable<Book> GetAllBooks()
         {
-            return new ReadOnlyCollection<Book>(_bookStore);
+            return _bookStore;
         }
     }
 }
