@@ -5,7 +5,7 @@ namespace StyletBookStore.Pages.Books.BookItems
 {
     public class BookItemViewModel : Screen
     {
-        public Book Book { get; set; }
+        public Book Book { get; }
 
         public BookItemViewModel(Book book)
         {
