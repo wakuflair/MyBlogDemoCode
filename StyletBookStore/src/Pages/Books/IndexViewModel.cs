@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Stylet;
 using StyletBookStore.Models;
+using StyletBookStore.Pages.Books.BookItems;
 using StyletBookStore.Services;
 
 namespace StyletBookStore.Pages.Books
@@ -9,8 +11,7 @@ namespace StyletBookStore.Pages.Books
     public class IndexViewModel : Screen
     {
         private readonly IBookService _bookService;
-        public ObservableCollection<Book> Books { get; set; } = new ObservableCollection<Book>();
-        public Book? SelectedBook { get; set; }
+        public ObservableCollection<BookItemViewModel> BookItems { get; set; } = new ObservableCollection<BookItemViewModel>();
 
         public IndexViewModel(IBookService bookService)
         {
@@ -19,7 +20,11 @@ namespace StyletBookStore.Pages.Books
 
         protected override void OnViewLoaded()
         {
-            Books = new ObservableCollection<Book>(_bookService.GetAllBooks());
+            var viewModels = _bookService.GetAllBooks()
+                    .Select(book => new BookItemViewModel(book))
+                ;
+
+            BookItems = new ObservableCollection<BookItemViewModel>(viewModels);
         }
     }
 }

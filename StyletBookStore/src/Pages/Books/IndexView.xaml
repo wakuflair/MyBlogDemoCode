@@ -4,45 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:StyletBookStore.Pages.Books"
-             xmlns:wpf="clr-namespace:StyletBookStore.WPF"
+             xmlns:s="https://github.com/canton7/Stylet"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance local:IndexViewModel}">
-    <UserControl.Resources>
-        <wpf:BookTypeConverter x:Key="BookTypeConverter"/>
-    </UserControl.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <DataGrid Grid.Column="0" ItemsSource="{Binding Books}" AutoGenerateColumns="False" IsReadOnly="True" AlternatingRowBackground="WhiteSmoke" SelectedItem="{Binding SelectedBook}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="书名" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="类型" Binding="{Binding Type, Converter={StaticResource BookTypeConverter}}" />
-                <DataGridTextColumn Header="价格" Binding="{Binding Price, StringFormat='{}{0}元'}" >
-                <DataGridTextColumn.ElementStyle>
-                    <Style TargetType="{x:Type TextBlock}">
-                        <Setter Property="HorizontalAlignment" Value="Right" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <DockPanel Grid.Column="1" Width="400" Background="WhiteSmoke">
-            <Image DockPanel.Dock="Top" Width="140" Height="206" Source="{Binding SelectedBook.CoverUrl}"></Image>
-            <StackPanel>
-                <StackPanel.Resources>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="Margin" Value="5"></Setter>
-                        <Setter Property="FontSize" Value="20"></Setter>
-                    </Style>
-                </StackPanel.Resources>
-                <TextBlock Text="{Binding SelectedBook.Name, StringFormat='书名:《{0}》'}"></TextBlock>
-                <TextBlock Text="{Binding SelectedBook.Type, StringFormat='类型: {0}', Converter={StaticResource BookTypeConverter}}"></TextBlock>
-                <TextBlock Text="{Binding SelectedBook.Price, StringFormat='价格: {0}元'}"></TextBlock>
-                <TextBlock Text="{Binding SelectedBook.PublishDate, StringFormat='出版年月: {0:yyyy-MM}'}"></TextBlock>
-            </StackPanel>
-        </DockPanel>
-    </Grid>
+    <ListView ItemsSource="{Binding BookItems}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListView.ItemsPanel>
+            <ItemsPanelTemplate>
+                <WrapPanel/>
+            </ItemsPanelTemplate>
+        </ListView.ItemsPanel>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ContentControl s:View.Model="{Binding}"></ContentControl>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </UserControl>
