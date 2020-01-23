@@ -1,5 +1,6 @@
 ﻿using Stylet;
 using StyletBookStore.Pages;
+using StyletBookStore.Services;
 using StyletIoC;
 
 namespace StyletBookStore
@@ -9,6 +10,7 @@ namespace StyletBookStore
         protected override void ConfigureIoC(IStyletIoCBuilder builder)
         {
             // Configure the IoC container in here
+            builder.Bind<IBookService>().To<BookService>();
         }
 
         protected override void Configure()
